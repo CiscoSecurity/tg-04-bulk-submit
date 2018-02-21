@@ -30,7 +30,7 @@ url = 'https://panacea.threatgrid.com/api/v2/samples'
 api_key = 'asdf1234asdf1234asdf1234'
 formData = {'api_key': api_key, 'private': 'true', 'vm':'win7-x64', 'email_notification':'False'}
 number_of_files = len(inputFiles)
-times_to_submit = 5
+times_to_submit = 1
 time_submitted = 0
 
 
