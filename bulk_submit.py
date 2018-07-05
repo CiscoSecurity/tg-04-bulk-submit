@@ -13,7 +13,7 @@ inputFiles = []
 # Check if the supplied parameter is a directory
 if os.path.isdir(inputParam):
     print 'You have supplied a directory'
-    for (dirpath, dirnames,filenames) in os.walk(inputStr):
+    for (dirpath, dirnames, filenames) in os.walk(inputStr):
         for file in filenames:
             filePath = '{}/{}'.format(dirpath,file)
             inputFiles.append(filePath)
