@@ -12,7 +12,7 @@ inputFiles = []
 
 # Check if the supplied parameter is a directory
 if os.path.isdir(inputParam):
-    print 'You have supplied a directory'
+    print('You have supplied a directory')
     for (dirpath, dirnames, filenames) in os.walk(inputStr):
         for file in filenames:
             filePath = '{}/{}'.format(dirpath, file)
@@ -35,23 +35,23 @@ time_submitted = 0
 
 
 if number_of_files is 1:
-    print 'Submitting {} {} times'.format(inputFiles[0], times_to_submit)
+    print('Submitting {} {} times'.format(inputFiles[0], times_to_submit))
     while time_submitted < times_to_submit:
         sample = {'sample': open(inputFiles[0], 'rb')}
         r = requests.post(url, files=sample, data=formData, verify=True)
         response = r.json()
         sample_id = response['data']['id']
-        print sample_id
+        print(sample_id)
         time_submitted += 1
 
 if number_of_files > 1:
-    print 'Will submit the following files:'
+    print('Will submit the following files:')
     for file in inputFiles:
-        print '   {}'.format(file)
-    print '\r'
+        print('   {}'.format(file))
+    print('\r')
     for file in inputFiles:
         sample = {'sample': open(file, 'rb')}
         r = requests.post(url, files=sample, data=formData, verify=True)
         response = r.json()
         sample_id = response['data']['id']
-        print file, sample_id
+        print(file, sample_id)
