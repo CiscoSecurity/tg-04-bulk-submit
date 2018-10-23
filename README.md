@@ -1,13 +1,18 @@
-# TGBulkSubmit
-Easily Submit Files to Threat Grid via the API
+### Threat Grid Bulk Submit
 
-To use: 
-Enter a valid Threat Grid API Key on line 30
+Easily Submit Files to Threat Grid via the API. Can submit a directory full of files or it can be configured to submit the same file multiple times.
 
-Pass either a single file or directory of files as a command line parameter:
+### Before using you must update the following:
+- Line 30: api_key 
 
+### Usage
+
+To submit a file:
+```
 python bulk_submit.py file.exe
+```
 
-or
-
+To submit files in a directory:
+```
 python bulk_submit.py directory
+```
