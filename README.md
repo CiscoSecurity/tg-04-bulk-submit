@@ -5,6 +5,9 @@ Easily Submit Files to Threat Grid via the API. Can submit a directory full of f
 ### Before using you must update the following:
 - Line 30: api_key 
 
+If you want to submit an individual file more than once
+- Line 33: times_to_submit 
+
 ### Usage
 
 To submit a file:
