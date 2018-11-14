@@ -1,3 +1,5 @@
+[![Gitter chat](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg)](https://gitter.im/CiscoSecurity/Threat-Grid "Gitter chat")
+
 ### Threat Grid Bulk Submit
 
 Easily Submit Files to Threat Grid via the API. Can submit a directory full of files or it can be configured to submit the same file multiple times.
