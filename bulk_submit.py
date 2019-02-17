@@ -6,52 +6,52 @@ import requests
 if len(sys.argv) < 2:
     sys.exit('Usage:\n %s sample' % sys.argv[0])
 
-inputParam = sys.argv[1]
-inputStr = '{}'.format(inputParam)
-inputFiles = []
+input_param = sys.argv[1]
+input_files = []
 
 # Check if the supplied parameter is a directory
-if os.path.isdir(inputParam):
+if os.path.isdir(input_param):
     print('You have supplied a directory')
-    for (dirpath, dirnames, filenames) in os.walk(inputStr):
+    for (dirpath, dirnames, filenames) in os.walk(input_param):
         for file in filenames:
-            filePath = '{}/{}'.format(dirpath, file)
-            inputFiles.append(filePath)
+            file_path = os.path.join(dirpath, file)
+            input_files.append(file_path)
+else:
+    # Append the provided parameter to input_files
+    input_files.append(input_param)
 
 # If the supplied parameter is a file validate it exists
-if not os.path.exists(inputParam):
-    sys.exit('File {} doesn\'t exist'.format(inputParam))
-
-# Append the filename to inputfiles
-if not os.path.isdir(inputParam):
-    inputFiles.append(inputParam)
+if not os.path.exists(input_param):
+    sys.exit('File {} doesn\'t exist'.format(input_param))
 
 url = 'https://panacea.threatgrid.com/api/v2/samples'
-api_key = 'asdf1234asdf1234asdf1234'
-formData = {'api_key': api_key, 'private': 'true', 'vm':'win7-x64', 'email_notification':'False'}
-number_of_files = len(inputFiles)
+tg_api_key = 'asdf1234asdf1234asdf1234'
+form_data = {'api_key': tg_api_key, 'private': 'true'}
+number_of_files = len(input_files)
 times_to_submit = 1
-time_submitted = 0
+submitted_count = 0
 
-
-if number_of_files is 1:
-    print('Submitting {} {} times'.format(inputFiles[0], times_to_submit))
-    while time_submitted < times_to_submit:
-        sample = {'sample': open(inputFiles[0], 'rb')}
-        r = requests.post(url, files=sample, data=formData, verify=True)
-        response = r.json()
+if number_of_files == 1:
+    if times_to_submit == 1:
+        print('Submitting {} once'.format(input_files[0]))
+    if times_to_submit > 1:
+        print('Submitting {} {} times'.format(input_files[0], times_to_submit))
+    while submitted_count < times_to_submit:
+        sample = {'sample': open(input_files[0], 'rb')}
+        request = requests.post(url, files=sample, data=form_data, verify=True)
+        response = request.json()
         sample_id = response['data']['id']
         print(sample_id)
-        time_submitted += 1
+        submitted_count += 1
 
 if number_of_files > 1:
     print('Will submit the following files:')
-    for file in inputFiles:
+    for file in input_files:
         print('   {}'.format(file))
     print('\r')
-    for file in inputFiles:
+    for file in input_files:
         sample = {'sample': open(file, 'rb')}
-        r = requests.post(url, files=sample, data=formData, verify=True)
-        response = r.json()
+        request = requests.post(url, files=sample, data=form_data, verify=True)
+        response = request.json()
         sample_id = response['data']['id']
         print(file, sample_id)
