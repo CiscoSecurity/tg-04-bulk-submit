@@ -1,11 +1,11 @@
 [![Gitter chat](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg)](https://gitter.im/CiscoSecurity/Threat-Grid "Gitter chat")
 
 ### Threat Grid Bulk Submit:
-Easily submit files to Threat Grid via the API. A directory of files or a single file may be supplied as a command line argument. 
+Easily submit files to Threat Grid via the API. A directory of files or a single file may be supplied as a command line argument.
 
-When submitting a direcotry everything, including files in sub-directories, will be submitted. The file name and associated sample ID will be printed to the console.
+When submitting a directory everything, including files in sub-directories, will be submitted. The file name and associated sample ID will be printed to the console.
 
-When submiting a file, the default is to submit the file one time. Changing the times_to_submit variable to 5 will result files being submitted 5 times. The sample IDs of the submissions will be printed to the console.
+When submitting a file, the default is to submit the file one time. Changing the times_to_submit variable to 5 will result files being submitted 5 times. The sample IDs of the submissions will be printed to the console.
 
 ### Before using you must update the following:
 - tg_api_key
